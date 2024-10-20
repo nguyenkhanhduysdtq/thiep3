@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Form</title>
+    <style>
+        body {
+            background-image: url('nen.jpg');
+            background-size: cover;
+
+            /* Đảm bảo ảnh nền luôn nằm giữa */
+            background-position: center;
+
+            /* Ảnh nền không lặp lại */
+            background-repeat: no-repeat;
+
+            /* Đặt chiều cao tối thiểu cho trang */
+            min-height: 100vh;
+
+            /* Font và màu chữ cho trang */
+            font-family: Arial, sans-serif;
+        }
+
+        #myForm {
+            text-align: center;
+            padding-top: 20%;
+
+        }
+
+        #title {
+            color: blue;
+        }
+
+        #submit {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <label for="inputField" id="title">Mọi người nhập tên có dấu nhé:</label>
+        <input type="text" id="inputField" name="inputData" required>
+        <button type="submit" id="submit">Xong bấm đây nhé</button>
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault();  // Ngăn chặn hành vi mặc định (gửi form)
+
+            // Lấy giá trị của thẻ input
+            const inputData = document.getElementById('inputField').value;
+            console.log("Input data:", inputData);
+            localStorage.setItem('inputValue', inputData);
+
+            // Chuyển hướng đến trang index với dữ liệu input nếu cần
+            window.location.href = `home.html?data=${encodeURIComponent(inputData)}`;
+
+
+        }
+        )
+
+    </script>
+</body>
+
+</html>
